@@ -16,6 +16,7 @@ export const costService = {
     try {
         // const userToken = userService.read()
         const session = await axios.get(`${baseUrl}stripe/pay`, {params: {plan_id, user_id}});
+        console.log("stripe pay ok")
         console.log(session);
         return session;
     } catch (error) {
