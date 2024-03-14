@@ -19,9 +19,9 @@ export const chatService = {
             return false;
         }
     },
-    fetch: async (cht_id) => {
+    fetch: async (user_id, cht_id) => {
         try{
-            const payload = {cht_id}
+            const payload = {user_id, cht_id}
             const response = await axios.post(`${baseUrl}chat/fetch`, payload);
             if(response.status === 200) {
                 return response

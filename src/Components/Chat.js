@@ -26,7 +26,7 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
 
   const InitialChat = async () => {
     try {
-      const chathistory = await chatService.fetch(chatId);
+      const chathistory = await chatService.fetch(user_id, chatId);
       const datas = chathistory.data.history;
       for (var i = 0; i < datas.length; i++) {
         if (datas[i].userSend) {
