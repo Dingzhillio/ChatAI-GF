@@ -26,7 +26,8 @@ const Membership = () => {
     const userInfo = userService.read();
     const user_id = userInfo.data._id;
     // console.log("stripe pay ok")
-    const session = await costService.send(payment_id, user_id);
+    const plan_id = payment_id;
+    const session = await costService.send(plan_id, user_id);
     // console.log("stripe pay ok")
     const stripe = await stripePromise;
     await stripe.redirectToCheckout({ sessionId: session.data.id })
