@@ -12,7 +12,7 @@ const Membership = () => {
 
   const [membershipPlan, setMembershipPlan] = useState([]);
 
-  const stripePromise = loadStripe("pk_test_51L5ZpnGHcWGaQsBRbJ8NxCNrtT9I0tbSXG8wDH8JPART9HnI9S8kPajFnehSwC3mxVS0lGtEj7ZOzj0uP1FMFgBi00UR0NSmnm");
+  const stripePromise = loadStripe("pk_test_51OP5SnIBQIa5UltXbGaPeSeoYT7bONU7ZNg2elJRl0SxqrxkypRVXXuFfVhKGpEr0nj7R5diZdYFJkkEEGFAVaCA00NQXV9XKl");
 
   const fetchData = async () => {
     const membership = await costService.read();
