@@ -69,7 +69,7 @@ const SignUp = ({ setIsOpenSignUp,setIsOpenSignIn }) => {
                   <img src={pswIcon} alt="mail-icon" />
                 </div>
                 <input
-                  className="placeholder-gray-500 pl-2 text-xl font-bold outline-none w-full"
+                  className="placeholder-gray-500 pl-2 text-xl font-bold outline-none w-full" type="password"
                   name="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}
                 ></input>
               </div>

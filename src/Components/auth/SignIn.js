@@ -34,7 +34,7 @@ const SignIn = ({ setIsOpenSignIn, setIsOpenSignUp }) => {
             &#x2716;
           </button>
 
-          <div className="text-white text-center py-4 text-2xl shadow-lg shadow-dark font-custom text-shadow">
+          <div className="text-white text-center py-4 text-3xl shadow-lg shadow- drop-shadow-2xl font-custom text-shadow">
             LOGIN
           </div>
           <form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ const SignIn = ({ setIsOpenSignIn, setIsOpenSignUp }) => {
             </div>
 
             <button className="text-center text-xl text-white border-[1px] border-black rounded py-2 bg-[#0575C3] font-custom text-shadow-button w-full" type="submit">
-              LOGIN
+              Login
             </button>
           </div>
           </form>
