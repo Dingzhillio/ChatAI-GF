@@ -60,7 +60,6 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
     InitialChat();
     isMounted.current = false; //useEffect run only once
 
-    console.log("Twice")
   }, []);
 
   const handleChat = async () => {
