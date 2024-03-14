@@ -21,7 +21,7 @@ export const costService = {
         console.log(session);
         return session;
     } catch (error) {
-        console.log(error)
+        console.log("error", error)
     }
   },
 };
