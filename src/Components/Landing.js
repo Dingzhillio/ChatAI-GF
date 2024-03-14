@@ -4,9 +4,9 @@ import character1 from "../images/Girl and boy-eye.png";
 import { useEffect, useState } from "react";
 import SignUp from "./auth/SignUp";
 
-const Landing = () => {
+const Landing = ({isOpenSignUp, setIsOpenSignUp, setIsOpenSignIn}) => {
   const [imageURL, setImageURL] = useState(character);
-  const [isOpenSignUp, setIsOpenSignUp] = useState();
+  // const [isOpenSignUp, setIsOpenSignUp] = useState();
   useEffect(() => {
     const interval = setInterval(() => {
       if (imageURL === character) {
@@ -45,7 +45,7 @@ const Landing = () => {
           <img src={imageURL} className="m-auto" alt="boy_girl" />
         </div>
       </div>
-      {isOpenSignUp && <SignUp setIsOpenSignUp={setIsOpenSignUp}/>}
+      {isOpenSignUp && <SignUp setIsOpenSignUp={setIsOpenSignUp} setIsOpenSignIn={setIsOpenSignIn}/>}
     </>
   );
 };

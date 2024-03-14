@@ -4,7 +4,7 @@ import pswIcon from "../../images/password.svg";
 import { authService } from "../../services/auth.service";
 import { toast } from "react-toastify";
 
-const SignIn = ({ setIsOpenSignIn }) => {
+const SignIn = ({ setIsOpenSignIn, setIsOpenSignUp }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async (event) => {
@@ -18,6 +18,10 @@ const SignIn = ({ setIsOpenSignIn }) => {
     }else{
       toast.error("Login failed!");
     }
+  }
+  const toggle = () => {
+    setIsOpenSignUp(true);
+    setIsOpenSignIn();
   }
   return (
     <>
@@ -67,7 +71,7 @@ const SignIn = ({ setIsOpenSignIn }) => {
           </form>
           
           <div className="flex justify-between bg-[#CEE2F9] py-4 px-8 rounded-b">
-            <button className="text-[#023670] font-bold text-xl font-custom">SIGN UP</button>
+            <button className="text-[#023670] font-bold text-xl font-custom" onClick={toggle}>SIGN UP</button>
             <button className="text-[#6794A9] text-lg font-bold">Forgot Password?</button>
           </div>
         </div>

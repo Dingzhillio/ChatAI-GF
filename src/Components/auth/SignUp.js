@@ -5,7 +5,7 @@ import { useState } from "react";
 import { authService } from "../../services/auth.service";
 import { toast } from "react-toastify";
 
-const SignUp = ({ setIsOpenSignUp }) => {
+const SignUp = ({ setIsOpenSignUp,setIsOpenSignIn }) => {
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,6 +23,10 @@ const SignUp = ({ setIsOpenSignUp }) => {
     }else {
       toast.error("User already exists");
     }
+  }
+  const toggle = () => {
+    setIsOpenSignUp();
+    setIsOpenSignIn(true);
   }
   return (
     <>
@@ -79,9 +83,9 @@ const SignUp = ({ setIsOpenSignUp }) => {
           </form>
           <div className="bg-[#CEE2F9] rounded-b text-center py-4 text-lg font-bold text-[#6794A9]">
             Already have an account?{" "}
-            <span className="text-xl text-[#023875] cursor-pointer font-custom">
+            <button className="text-xl text-[#023875] cursor-pointer font-custom" onClick={()=>toggle()}>
               Login
-            </span>
+            </button>
           </div>
         </div>
       </div>

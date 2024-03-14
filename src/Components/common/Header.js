@@ -4,8 +4,8 @@ import SignIn from "../auth/SignIn";
 import { useNavigate } from "react-router-dom";
 import RemainTime from "../RemainTime";
 
-const Header = ({isLogin, headerReloadFlag, setHeaderReloadFlag}) => {
-  const [isOpenSignIn, setIsOpenSignIn] = useState();
+const Header = ({isLogin, headerReloadFlag, setHeaderReloadFlag, isOpenSignIn, setIsOpenSignIn, setIsOpenSignUp}) => {
+  // const [isOpenSignIn, setIsOpenSignIn] = useState();
   const navigate = useNavigate();
   const handleOnclick = () => {
     navigate('/')
@@ -29,7 +29,7 @@ const Header = ({isLogin, headerReloadFlag, setHeaderReloadFlag}) => {
           )
         }
       </div>
-      {isOpenSignIn && <SignIn setIsOpenSignIn={setIsOpenSignIn}/>}
+    {isOpenSignIn && <SignIn setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
     </>
   );
 };
