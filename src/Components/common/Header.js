@@ -13,7 +13,7 @@ const Header = ({isLogin, headerReloadFlag, setHeaderReloadFlag, isOpenSignIn, s
       <div className="flex justify-between">
         <div className="flex items-end" onClick={handleOnclick}>
           <img src={logo} alt="logo" className="w-20 cursor-pointer" />
-          <div className="text-3xl font-bold mb-4 text-white tracking-wide font-custom ms-3 text-shadow">Friend AI</div>
+          <div className="text-3xl font-bold mb-4 text-white tracking-wide font-custom ms-3 text-shadow">SUMMONBAE</div>
         </div>
         {
           isLogin ? (
