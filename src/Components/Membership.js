@@ -12,7 +12,7 @@ const Membership = () => {
 
   const [membershipPlan, setMembershipPlan] = useState([]);
 
-  const stripePromise = loadStripe("pk_test_51OP5SnIBQIa5UltXbGaPeSeoYT7bONU7ZNg2elJRl0SxqrxkypRVXXuFfVhKGpEr0nj7R5diZdYFJkkEEGFAVaCA00NQXV9XKl");
+  const stripePromise = loadStripe("pk_test_51L5ZpnGHcWGaQsBRbJ8NxCNrtT9I0tbSXG8wDH8JPART9HnI9S8kPajFnehSwC3mxVS0lGtEj7ZOzj0uP1FMFgBi00UR0NSmnm");
 
   const fetchData = async () => {
     const membership = await costService.read();
@@ -25,6 +25,7 @@ const Membership = () => {
   const handlePayment = async (payment_id) => {
     const userInfo = userService.read();
     const user_id = userInfo.data._id;
+    console.log("stripe pay ok")
     const session = await costService.send(payment_id, user_id);
     const stripe = await stripePromise;
     await stripe.redirectToCheckout({ sessionId: session.data.id })
