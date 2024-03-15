@@ -79,7 +79,6 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
         if (res) {
           setConversation((prevDiv) => [...prevDiv, userDiv]);
           setMsg("");
-          console.log("openai chat")
           const response = await botRes(msg);
 
           const botDiv = (
@@ -131,7 +130,6 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
   const botRes = async (msg) => {
     const send = false;
     const payload = { user_id, cht_id, send, msg };
-    console.log("openai chat")
     const response = await chatService.botRes(payload);
     console.log(response);
     return response.data;
