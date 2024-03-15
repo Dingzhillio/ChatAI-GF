@@ -10,20 +10,18 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 // import { useProgress } from '@react-three/drei';
 
-
-function Loading() {
-  // const { progress } = useProgress();
-  // return <h1>Loading... {progress.toFixed(2)}%</h1>;
-}
+const Loading = () => <div>Loading...</div>;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Suspense fallback={<Loading/>}>
+  <>
     <React.StrictMode>
-      <App />
+      <Suspense fallback={<Loading />}>
+        <App />
+      </Suspense>
       <ToastContainer position="top-right" newestOnTop />
     </React.StrictMode>
-  </Suspense>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
