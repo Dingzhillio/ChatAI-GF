@@ -17,12 +17,6 @@ const Characters = () => {
           </div>
         </div>
       ) : (
-        // <div className="bg-logout-pattern h-full bg-cover min-h-screen">
-        //   <div className="max-w-screen-xl mx-auto py-3 px-5">
-        //     <Header isLogin={isLogin} headerReloadFlag={headerReloadFlag} setHeaderReloadFlag={setHeaderReloadFlag}/>
-        //     <Character setHeaderReloadFlag={setHeaderReloadFlag}/>
-        //   </div>
-        // </div>
         <Home/>
       )}
     </>
