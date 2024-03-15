@@ -4,8 +4,10 @@ import Home from './Components/Home';
 import Characters from './Components/Characters';
 import PrivateLayout from './Components/PrivateLayout';
 import Membership from './Components/Membership';
+import { Suspense } from 'react';
 
 function App() {
+  const Loading = () => <div>Loading...</div>;
   return (
     <BrowserRouter>
       <Routes>
@@ -14,7 +16,7 @@ function App() {
             <Home/>
           </PrivateLayout>
         }/>
-        <Route path='home' element={<Characters/>}/>
+        <Route path='home' element={<Suspense fallback={<Loading />}><Characters/></Suspense>}/>
         <Route path='membership' element={<Membership/>}/>
       </Routes>
     </BrowserRouter>
