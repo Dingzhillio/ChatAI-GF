@@ -27,6 +27,7 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
   const InitialChat = async () => {
     try {
       const chathistory = await chatService.fetch(user_id, chatId);
+      console.log("fetch chat1");
       const datas = chathistory.data.history;
       for (var i = 0; i < datas.length; i++) {
         if (datas[i].userSend) {
@@ -47,8 +48,10 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
             </div>
           );
           setConversation((prevDiv) => [...prevDiv, history])
+          console.log("fetch chat2")
         }
       }
+      console.log("fetch chat3")
     } catch (error) {
       console.log(error);
     }
