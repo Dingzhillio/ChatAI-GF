@@ -59,7 +59,8 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
 
   const isMounted = useRef(true); //useEffect run only once
 
-  useEffect(() => () => {
+  useEffect(() => {
+    console.log("useEffect")
     InitialChat();
     isMounted.current = false; //useEffect run only once
 
