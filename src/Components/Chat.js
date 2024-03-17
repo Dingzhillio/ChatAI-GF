@@ -62,9 +62,20 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
   const isMounted = useRef(true); //useEffect run only once
 
   useEffect(() => {
-    console.log("useEffect");
+    const startTime = Date.now();
     InitialChat();
+    const endTime = Date.now();
+    const duration = endTime - startTime;
+
+    // Simulate loading delay with setTimeout
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, duration); // Adjust this timeout according to your actual loading time
+
+    // Clear the timer on component unmount to avoid memory leaks
     isMounted.current = false; //useEffect run only once
+    return () => clearTimeout(timer);
+    
   }, []);
 
   const handleChat = async () => {
@@ -146,15 +157,15 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
     }
   }, [conversation]);
 
-  useEffect(() => {
-    // Simulate loading delay with setTimeout
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Adjust this timeout according to your actual loading time
+  // useEffect(() => {
+  //   // Simulate loading delay with setTimeout
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000); // Adjust this timeout according to your actual loading time
 
-    // Clear the timer on component unmount to avoid memory leaks
-    return () => clearTimeout(timer);
-  }, []);
+  //   // Clear the timer on component unmount to avoid memory leaks
+  //   return () => clearTimeout(timer);
+  // }, []);
   return (
     <>
       <div className="fixed top-20 left-0 h-full bg-gray-950/[0.8] w-full flex align-bottom">
