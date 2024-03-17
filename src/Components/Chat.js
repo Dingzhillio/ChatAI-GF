@@ -15,6 +15,8 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
   const [conversation, setConversation] = useState([]);
   // const [history, setHistory] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const chatboxRef = useRef(null);
   const userInfo = userService.read();
   const user_id = userInfo.data._id;
@@ -38,7 +40,7 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
               </div>
             </div>
           );
-          setConversation((prevDiv) => [...prevDiv, history])
+          setConversation((prevDiv) => [...prevDiv, history]);
         } else {
           const history = (
             <div className="p-2 w-full flex">
@@ -47,11 +49,11 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
               </div>
             </div>
           );
-          setConversation((prevDiv) => [...prevDiv, history])
-          console.log("fetch chat2")
+          setConversation((prevDiv) => [...prevDiv, history]);
+          console.log("fetch chat2");
         }
       }
-      console.log("fetch chat3")
+      console.log("fetch chat3");
     } catch (error) {
       console.log(error);
     }
@@ -60,10 +62,9 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
   const isMounted = useRef(true); //useEffect run only once
 
   useEffect(() => {
-    console.log("useEffect")
+    console.log("useEffect");
     InitialChat();
     isMounted.current = false; //useEffect run only once
-
   }, []);
 
   const handleChat = async () => {
@@ -144,6 +145,16 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
       chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
     }
   }, [conversation]);
+
+  useEffect(() => {
+    // Simulate loading delay with setTimeout
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Adjust this timeout according to your actual loading time
+
+    // Clear the timer on component unmount to avoid memory leaks
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
       <div className="fixed top-20 left-0 h-full bg-gray-950/[0.8] w-full flex align-bottom">
@@ -161,12 +172,24 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
                   &#x2716;
                 </button>
               </div>
-              <div
-                className="ps-3 pl-5 h-custom scroll overflow-auto font-custom flex flex-col  "
-                ref={chatboxRef}
-              >
-                {conversation}
-              </div>
+              {isLoading ? (
+                <div className="h-full flex justify-center items-center">
+                  <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  className="ps-3 pl-5 h-custom scroll overflow-auto font-custom flex flex-col  "
+                  ref={chatboxRef}
+                >
+                  {conversation}
+                </div>
+              )}
+
               <div className="absolute bottom-2 w-full flex ps-3 pr-5">
                 <input
                   className="w-full rounded-lg outline-none py-2 px-5 bg-[#050F1A] border border-gray-700 font-custom"
