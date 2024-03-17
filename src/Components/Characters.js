@@ -13,7 +13,7 @@ const Characters = () => {
     // Simulate loading delay with setTimeout
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // Adjust this timeout according to your actual loading time
+    }, 2000); // Adjust this timeout according to your actual loading time
 
     // Clear the timer on component unmount to avoid memory leaks
     return () => clearTimeout(timer);
