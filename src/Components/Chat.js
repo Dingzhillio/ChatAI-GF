@@ -66,11 +66,11 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
     InitialChat();
     const endTime = Date.now();
     const duration = endTime - startTime;
-
+    console.log(duration)
     // Simulate loading delay with setTimeout
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, duration); // Adjust this timeout according to your actual loading time
+    }, duration * 1000); // Adjust this timeout according to your actual loading time
 
     // Clear the timer on component unmount to avoid memory leaks
     isMounted.current = false; //useEffect run only once
@@ -157,15 +157,6 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
     }
   }, [conversation]);
 
-  // useEffect(() => {
-  //   // Simulate loading delay with setTimeout
-  //   const timer = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 2000); // Adjust this timeout according to your actual loading time
-
-  //   // Clear the timer on component unmount to avoid memory leaks
-  //   return () => clearTimeout(timer);
-  // }, []);
   return (
     <>
       <div className="fixed top-20 left-0 h-full bg-gray-950/[0.8] w-full flex align-bottom">
