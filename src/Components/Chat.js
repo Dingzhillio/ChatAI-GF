@@ -72,11 +72,12 @@ const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
       setIsLoading(false);
     }, duration * 1000); // Adjust this timeout according to your actual loading time
 
-    // Clear the timer on component unmount to avoid memory leaks
     if (chatboxRef.current) {
       chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
     }
     isMounted.current = false; //useEffect run only once
+
+    // Clear the timer on component unmount to avoid memory leaks
     return () => clearTimeout(timer);
     
   }, []);
