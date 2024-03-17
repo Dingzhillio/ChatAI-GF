@@ -12,7 +12,9 @@ const Membership = () => {
 
   const [membershipPlan, setMembershipPlan] = useState([]);
 
-  const stripePromise = loadStripe("pk_test_51L5ZpnGHcWGaQsBRbJ8NxCNrtT9I0tbSXG8wDH8JPART9HnI9S8kPajFnehSwC3mxVS0lGtEj7ZOzj0uP1FMFgBi00UR0NSmnm");
+  const [isLoading, setIsLoading] = useState(true);
+
+  const stripePromise = loadStripe("pk_test_51O5TjdEDrDR7MqCwZ8bMHD5dGg1YvsNUlsNM9o1iiE08UDgLCTGHxbR0OMshP8sMZt1ugWQN0ltUv9qxPCebhtgG00YCUN6omv");
 
   const fetchData = async () => {
     const membership = await costService.read();
@@ -22,6 +24,15 @@ const Membership = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Simulate loading delay with setTimeout
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // Adjust this timeout according to your actual loading time
+
+    // Clear the timer on component unmount to avoid memory leaks
+    return () => clearTimeout(timer);
+  }, []);
   const handlePayment = async (payment_id) => {
     const userInfo = userService.read();
     const user_id = userInfo.data._id;
@@ -37,7 +48,17 @@ const Membership = () => {
   }
   return (
     <>
-      <div className="bg-hero-pattern h-full bg-cover min-h-screen">
+    {
+      isLoading ? (
+        <div className="bg-black h-screen">
+              <div className="absolute top-[50%] left-[50%]">
+                <div class="lds-heart">
+                  <div></div>
+                </div>
+              </div>
+            </div>
+      ) : (
+        <div className="bg-hero-pattern h-full bg-cover min-h-screen">
         <div className="max-w-screen-xl mx-auto py-3 px-5">
           <Header isLogin={isLogin} headerReloadFlag={headerReloadFlag} setHeaderReloadFlag={setHeaderReloadFlag} />
           <div className="w-full h-full border-t-2 border-[#0A1921] bg-gray-900/[0.4] fixed top-20 left-0">
@@ -80,6 +101,9 @@ const Membership = () => {
           </div>
         </div>
       </div>
+      )
+    }
+      
     </>
   );
 };

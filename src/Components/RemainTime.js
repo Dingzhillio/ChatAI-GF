@@ -4,7 +4,7 @@ import { authService } from "../services/auth.service";
 import { userService } from "../services/user.service";
 import { useEffect, useState } from "react";
 
-const RemainTime = ({headerReloadFlag, setHeaderReloadFlag}) => {
+const RemainTime = ({ headerReloadFlag, setHeaderReloadFlag }) => {
   const [remainTime, setRemainTime] = useState();
   const navigate = useNavigate();
   const handleMembership = () => {
@@ -20,23 +20,38 @@ const RemainTime = ({headerReloadFlag, setHeaderReloadFlag}) => {
   };
   useEffect(() => {
     fetchData();
-    setHeaderReloadFlag(false)
+    setHeaderReloadFlag(false);
   }, [headerReloadFlag, setHeaderReloadFlag]);
+  const logout = async () => {
+    const user = userService.read() ? userService.read() : {};
+    if (user) {
+      userService.remove();
+      window.location.reload(false);
+    }
+  };
   return (
     <>
-      <div className="bg-[#270E0C] min-w-64 my-3 pr-5 relative flex">
+      <div className="flex items-center">
+        <div className="bg-[#270E0C] min-w-64 my-3 pr-5 relative flex">
+          <button
+            className="-ms-5 -my-1 text-5xl px-2 text-center font-custom font-black text-[#A2401C] rounded-lg shadow-black shadow-[0_3px_3px_0px_rgba(0,0,0,0.3)] active:shadow-none border-2 border-[#270E0C] bg-gradient-to-b from-amber-800 to-amber-300"
+            onClick={handleMembership}
+          >
+            &#x2B;
+          </button>
+          <div className="text-end  w-full text-white font-custom text-4xl">
+            {remainTime}
+          </div>
+          <div className="absolute right-3 translate-x-[100%] top-0 -translate-y-1">
+            <img src={timer} alt="timer" className="w-12" />
+          </div>
+        </div>
         <button
-          className="-ms-5 -my-1 text-5xl px-2 text-center font-custom font-black text-[#A2401C] rounded-lg shadow-black shadow-[0_3px_3px_0px_rgba(0,0,0,0.3)] active:shadow-none border-2 border-[#270E0C] bg-gradient-to-b from-amber-800 to-amber-300"
-          onClick={handleMembership}
+          className="text-2xl font-bold mb-4 text-white tracking-wide font-custom ms-3 text-shadow ps-8 pt-3"
+          onClick={logout}
         >
-          &#x2B;
+          Logout
         </button>
-        <div className="text-end  w-full text-white font-custom text-4xl">
-          {remainTime}
-        </div>
-        <div className="absolute right-3 translate-x-[100%] top-0 -translate-y-1">
-          <img src={timer} alt="timer" className="w-12" />
-        </div>
       </div>
     </>
   );
