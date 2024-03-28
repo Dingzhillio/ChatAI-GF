@@ -1,12 +1,10 @@
 import { useState } from "react";
+import mailIcon from "../../images/email.svg";
+import pswIcon from "../../images/password.svg";
 import { authService } from "../../services/auth.service";
 import { toast } from "react-toastify";
 
 const SignIn = ({ setIsOpenSignIn, setIsOpenSignUp }) => {
-
-  const mailIcon = `${process.env.REACT_APP_FRONT}images/email.svg`;
-  const pswIcon = `${process.env.REACT_APP_FRONT}images/password.svg`;
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async (event) => {

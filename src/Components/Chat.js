@@ -1,15 +1,14 @@
+import cht_1 from "../images/Girl-up.png";
+import cht_2 from "../images/boy.png";
+import cht_3 from "../images/student girl.png";
+import cht_4 from "../images/student.png";
+
+import sendIcon from "../images/laugh-emoticon.png";
 import { useEffect, useRef, useState } from "react";
 import { chatService } from "../services/chat.service";
 import { userService } from "../services/user.service";
 
 const Chat = ({ chatId, setIsChatOpen, setHeaderReloadFlag }) => {
-
-  const cht_1 = `${process.env.REACT_APP_FRONT}images/Girl-up.png`;
-  const cht_2 = `${process.env.REACT_APP_FRONT}images/boy.png`;
-  const cht_3 = `${process.env.REACT_APP_FRONT}images/student girl.png`;
-  const cht_4 = `${process.env.REACT_APP_FRONT}images/student.png`;
-
-  const sendIcon = `${process.env.REACT_APP_FRONT}images/laugh-emoticon.png`;
   const imageUrls = ["", cht_1, cht_2, cht_3, cht_4];
 
   const [msg, setMsg] = useState("");

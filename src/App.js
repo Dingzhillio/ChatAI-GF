@@ -9,32 +9,32 @@ import { IMAGES } from "./Images";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [imgsLoaded, setImgsLoaded] = useState(true);
+  // const [imgsLoaded, setImgsLoaded] = useState(true);
 
-  useEffect(() => {
-    const loadImage = (image) => {
-      return new Promise((resolve, reject) => {
-        const loadImg = new Image();
-        loadImg.src = image.url;
-        // wait 2 seconds to simulate loading time
-        loadImg.onload = () =>
-          setTimeout(() => {
-            console.log("image url:", image.url)
-            resolve(image.url);
-          }, 2000);
+  // useEffect(() => {
+  //   const loadImage = (image) => {
+  //     return new Promise((resolve, reject) => {
+  //       const loadImg = new Image();
+  //       loadImg.src = image.url;
+  //       // wait 2 seconds to simulate loading time
+  //       loadImg.onload = () =>
+  //         setTimeout(() => {
+  //           console.log("image url:", image.url)
+  //           resolve(image.url);
+  //         }, 2000);
 
-        loadImg.onerror = (err) => reject(err);
-      });
-    };
+  //       loadImg.onerror = (err) => reject(err);
+  //     });
+  //   };
 
-    Promise.all(IMAGES.map((image) => loadImage(image)))
-      .then(() => setImgsLoaded(false))
-      .catch((err) => console.log("Failed to load images", err));
-  }, []);
+  //   Promise.all(IMAGES.map((image) => loadImage(image)))
+  //     .then(() => setImgsLoaded(false))
+  //     .catch((err) => console.log("Failed to load images", err));
+  // }, []);
 
   return (
     <>
-      {imgsLoaded ? (
+      {/* {imgsLoaded ? (
         <div className="bg-black h-screen">
           <div className="absolute top-[50%] left-[50%]">
             <div class="lds-heart">
@@ -42,7 +42,7 @@ function App() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : ( */}
         <BrowserRouter>
           <Routes>
             <Route
@@ -57,7 +57,7 @@ function App() {
             <Route path="membership" element={<Membership />} />
           </Routes>
         </BrowserRouter>
-      )}
+      {/* )} */}
     </>
   );
 }

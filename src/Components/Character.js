@@ -1,3 +1,11 @@
+import cht_1_up from "../images/Girl-up.png";
+import cht_1_back from "../images/Girl-back.png";
+import cht_2_up from "../images/boy-eye.png";
+import cht_2_back from "../images/boy.png";
+import cht_3_up from "../images/student girl - click.png";
+import cht_3_back from "../images/student girl.png";
+import cht_4_up from "../images/student-eye.png";
+import cht_4_back from "../images/student.png";
 import { useState } from "react";
 import Chat from "./Chat";
 
@@ -9,15 +17,6 @@ const Character = ({setHeaderReloadFlag}) => {
       "I am Adeline, 19 years old. I have good experience with with dating.",
     cht_4: "This is Luke, 25 years old. I have good skill with girl.",
   };
-  const cht_1_back = `${process.env.REACT_APP_FRONT}images/Girl-back.png`;
-  const cht_1_up = `${process.env.REACT_APP_FRONT}images/Girl-up.png`;
-  const cht_2_up = `${process.env.REACT_APP_FRONT}images/boy-eye.png`;
-  const cht_2_back = `${process.env.REACT_APP_FRONT}images/boy.png`;
-  const cht_3_up = `${process.env.REACT_APP_FRONT}images/student girl - click.png`;
-  const cht_3_back = `${process.env.REACT_APP_FRONT}images/student girl.png`;
-  const cht_4_up = `${process.env.REACT_APP_FRONT}images/student-eye.png`;
-  const cht_4_back = `${process.env.REACT_APP_FRONT}images/student.png`;
-
   const [title, setTitle] = useState("");
   const [cht_1, setCht_1] = useState(cht_1_back);
   const [cht_2, setCht_2] = useState(cht_2_back);
