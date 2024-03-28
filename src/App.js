@@ -9,7 +9,7 @@ import { IMAGES } from "./Images";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [imgsLoaded, setImgsLoaded] = useState(false);
+  const [imgsLoaded, setImgsLoaded] = useState(true);
 
   useEffect(() => {
     const loadImage = (image) => {
@@ -19,6 +19,7 @@ function App() {
         // wait 2 seconds to simulate loading time
         loadImg.onload = () =>
           setTimeout(() => {
+            console.log("image url:", image.url)
             resolve(image.url);
           }, 2000);
 
@@ -27,7 +28,7 @@ function App() {
     };
 
     Promise.all(IMAGES.map((image) => loadImage(image)))
-      .then(() => setImgsLoaded(true))
+      .then(() => setImgsLoaded(false))
       .catch((err) => console.log("Failed to load images", err));
   }, []);
 
