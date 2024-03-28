@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./style.css";
@@ -10,15 +10,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 // import { useProgress } from '@react-three/drei';
 
-const Loading = () => <div>Loading...</div>;
+// const Loading = () => <div>Loading...</div>;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
     <React.StrictMode>
-      <Suspense fallback={<Loading />}>
+      {/* <Suspense fallback={<Loading />}> */}
         <App />
-      </Suspense>
+      {/* </Suspense> */}
       <ToastContainer position="top-right" newestOnTop />
     </React.StrictMode>
   </>

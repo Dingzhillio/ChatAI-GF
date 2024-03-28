@@ -1,10 +1,10 @@
-import button from "../images/Btn_OtherButton_Polygon02.png";
-import character from "../images/Girl and boy.png";
-import character1 from "../images/Girl and boy-eye.png";
 import { useEffect, useState } from "react";
 import SignUp from "./auth/SignUp";
 
 const Landing = ({isOpenSignUp, setIsOpenSignUp, setIsOpenSignIn}) => {
+  const button = `${process.env.REACT_APP_FRONT}images/Btn_OtherButton_Polygon02.png`;
+  const character = `${process.env.REACT_APP_FRONT}images/Girl and boy.png`;
+  const character1 = `${process.env.REACT_APP_FRONT}images/Girl and boy-eye.png`;
   const [imageURL, setImageURL] = useState(character);
   // const [isOpenSignUp, setIsOpenSignUp] = useState();
   useEffect(() => {

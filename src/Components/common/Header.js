@@ -1,4 +1,3 @@
-import logo from "../../images/logo.png";
 import SignIn from "../auth/SignIn";
 import { useNavigate } from "react-router-dom";
 import RemainTime from "../RemainTime";
@@ -15,6 +14,7 @@ const Header = ({
   const handleOnclick = () => {
     navigate("/");
   };
+  const logo = `${process.env.REACT_APP_FRONT}images/logo.png`;
   return (
     <>
       <div className="flex justify-between">

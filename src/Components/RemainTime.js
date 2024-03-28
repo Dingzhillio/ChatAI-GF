@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import timer from "../images/time.png";
 import { authService } from "../services/auth.service";
 import { userService } from "../services/user.service";
 import { useEffect, useState } from "react";
 
 const RemainTime = ({ headerReloadFlag, setHeaderReloadFlag }) => {
+  const timer = `${process.env.REACT_APP_FRONT}images/time.png`;
   const [remainTime, setRemainTime] = useState();
   const navigate = useNavigate();
   const handleMembership = () => {
